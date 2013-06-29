@@ -121,11 +121,13 @@ func oauthConnect(conn *streamConn, params map[string]string) (*http.Response, e
 	for n, v := range params {
 		op = append(op, &oauth.Pair{Key: n, Value: v})
 	}
+	fmt.Println(OauthCon)
 	resp, err := OauthCon.Post(
 		conn.url.String(),
 		op,
 		conn.at)
-
+	fmt.Println(resp)
+	fmt.Println(err)
 	if err != nil {
 		if resp != nil && resp.Body != nil {
 			data, _ := ioutil.ReadAll(resp.Body)
@@ -133,6 +135,7 @@ func oauthConnect(conn *streamConn, params map[string]string) (*http.Response, e
 			resp.Body.Close()
 		} else {
 			Log(ERROR, err)
+			return nil, err
 		}
 
 	} else {
