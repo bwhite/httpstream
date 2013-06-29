@@ -123,7 +123,6 @@ func oauthConnect(conn *streamConn, params map[string]string) (*http.Response, e
 		op = append(op, &oauth.Pair{Key: n, Value: v})
 	}
 	fmt.Println(OauthCon)
-	OauthCon)
 	fmt.Println(conn.url.String())
 	fmt.Println(op)
 	fmt.Println(conn.at)
